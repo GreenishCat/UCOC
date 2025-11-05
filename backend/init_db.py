@@ -30,6 +30,35 @@ def create_tables(conn):
             gearName TEXT,
             discipline TEXT,
             availability INTEGER CHECK (availability BETWEEN 0 AND 1)
+        )''',
+        '''CREATE TABLE IF NOT EXISTS gearRequest (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            email TEXT,
+            phoneNumber TEXT,
+            items TEXT,
+            quantity TEXT,
+            period TEXT,
+            status TEXT NOT NULL DEFAULT 'pending'
+                CHECK (status IN ('pending', 'accepted', 'rejected')),
+            date TEXT
+        )''',
+        '''CREATE TABLE IF NOT EXISTS news (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            eventName TEXT,
+            content TEXT,
+            thumbnail TEXT,
+            expireDate TEXT,
+            date TEXT
+        )''',
+        '''CREATE TABLE IF NOT EXISTS leaders (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            position TEXT NOT NULL DEFAULT 'member'
+                CHECK (position IN ('member', 'president', 'vicePresident', 'treasurer', 'secretary', 'outreach', 'gearManager')),
+            pictureURL TEXT,
+            info TEXT,
+            date TEXT
         )'''
     ]
 
