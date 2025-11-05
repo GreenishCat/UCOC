@@ -7,7 +7,7 @@ from datetime import datetime
 import json
 import sqlite3
 
-def create_tables(conn):
+def CreateTables(conn):
     """Create all database tables if they don't already exist"""
 
     cursor = conn.cursor()
@@ -66,7 +66,26 @@ def create_tables(conn):
         cursor.execute(table)
     conn.commit()
 
+def InsertTestData(conn):
+    """Insert test data into the database"""
+    cursor = conn.cursor()
+
+    #Current EBoard
+    cursor.executemany('''
+        INSERT INTO leaders (name, position, pictureURL, info, date)
+        VALUES (?, ?, ?, ?, ?)
+    ''', [
+        ('Gio Girasoli', 'president', 'x', 'I like long walks on the beach and playing Minecraft', datetime.now().isoformat()),
+        ('Sydney Kolz', 'vicePresident', 'x', 'x', datetime.now().isoformat()),
+        ('Ryan Le Vine', 'treasurer', 'x', 'x', datetime.now().isoformat()),
+        ('Ginny Decker', 'secretary', 'x', 'x', datetime.now().isoformat()),
+        ('Parker Pretty', 'outreach', 'x', 'x', datetime.now().isoformat())
+    ])
+
+    conn.commit()
+
 if __name__ == "__main__":
     db_conn = sqlite3.connect('ucoc.db')
-    create_tables(db_conn)
+    CreateTables(db_conn)
+    InsertTestData(db_conn)
     db_conn.close()
