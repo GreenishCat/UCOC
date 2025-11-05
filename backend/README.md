@@ -2,7 +2,9 @@
 
 ## Setup
 
-Run `python3 ./init_db.py` to initialize the sqlite3 database. Note the format of each column.
+Run `python3 init_db.py` to initialize the sqlite3 database. Note the format of each column.
+
+After initializing the database, run `python3 main.py` to run the main database server. This should show up localhost:5000.
 
 ## Structs
 
