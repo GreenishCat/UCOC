@@ -2,14 +2,16 @@
 
 ## Setup
 
-Run init_db.py to initialize the sqlite3 database. Note the format of each column.
+Run `python3 init_db.py` to initialize the sqlite3 database. Note the format of each column.
+
+After initializing the database, run `python3 main.py` to run the main database server. This should show up localhost:5000.
 
 ## Structs
 
-The following datatype can be found in the database structure. Certain fields are restricted to just these string values.
+The following datatypes can be found in the database structure. Certain fields are restricted to just these string values.
 
-tripType: 'hiking', 'climbing', 'social', 'skiing', 'boating', 'other'
+trips : tripType -> 'hiking', 'climbing', 'social', 'skiing', 'boating', 'other'
 
-position: 'member', 'president', 'vicePresident', 'treasurer', 'secretary', 'outreach', 'gearManager'
+leaders : position -> 'member', 'president', 'vicePresident', 'treasurer', 'secretary', 'outreach', 'gearManager'
 
 ##### Gio 11/5/25
