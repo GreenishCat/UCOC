@@ -10,7 +10,7 @@ def GetDBConnection():
     conn.row_factory = sqlite3.Row
     return conn
 
-@trips_bp.route('/trip/<int:trip_id>', methods=['GET'])
+@trips_bp.route('/trips/<int:trip_id>', methods=['GET'])
 def GetTripByID(trip_id):
     """
     Get a trip by integer ID
