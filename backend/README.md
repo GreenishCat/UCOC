@@ -6,7 +6,7 @@ Run `python3 ./init_db.py` to initialize the sqlite3 database. Note the format o
 
 ## Structs
 
-The following datatype can be found in the database structure. Certain fields are restricted to just these string values.
+The following datatypes can be found in the database structure. Certain fields are restricted to just these string values.
 
 trips : tripType -> 'hiking', 'climbing', 'social', 'skiing', 'boating', 'other'
 
