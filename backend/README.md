@@ -2,7 +2,7 @@
 
 ## Setup
 
-Run init_db.py to initialize the sqlite3 database. Note the format of each column.
+Run 'python3 ./init_db.py' to initialize the sqlite3 database. Note the format of each column.
 
 ## Structs
 
