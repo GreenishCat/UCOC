@@ -1,2 +1,2 @@
 backend/ucoc.db
-backend/routes/__pycache__/*
+__pycache__
