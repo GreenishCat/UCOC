@@ -87,7 +87,8 @@ def InsertTestData(conn):
         INSERT INTO trips (tripName, tripType, tripDate, tripLeader, tripLocation, info, link, formCloseDate, isFormClosed)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     ''', [
-        ('Mt. Washington', 'hiking', '2025-09-05', 'EBoard', 'Mt. Washington', 'Everybody\'s favorite', 'x', datetime.now().isoformat(timespec='hours'), 1)
+        ('Mt. Washington', 'hiking', '2025-09-05', 'EBoard', 'Mt. Washington', 'Everybody\'s favorite', 'x', datetime.now().isoformat(timespec='hours'), 1),
+        ('Rumney', 'climbing', '2025-12-18', 'EBoard', 'Mt. Rumney', 'I wish', 'x', datetime.now().isoformat(timespec='hours'), 1)
     ])
 
     conn.commit()

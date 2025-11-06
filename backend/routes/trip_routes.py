@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, session
 import os
 import sqlite3
+from datetime import datetime
 
 trips_bp = Blueprint('trips', __name__)
 
@@ -42,6 +43,7 @@ def GetTripByID(trip_id):
         (trip_id,)
     )
     trip = cursor.fetchone()
+    cursor.close()
     conn.close()
 
     if not trip:
@@ -59,3 +61,87 @@ def GetTripByID(trip_id):
         "formCloseDate": trip["formCloseDate"],
         "isFormClosed": trip["isFormClosed"]
     })
+
+@trips_bp.route('/trips', methods=['GET'])
+def GetCurrentTrips():
+    """
+    Get all current trips (tripDate > current date), ordered by tripDate
+    ---
+    tags:
+      - Trips
+
+    responses:
+        200:
+            description: The list of current trips
+    """
+
+    conn = GetDBConnection()
+    cursor = conn.cursor()
+
+    rows = cursor.execute('''
+        SELECT * FROM trips WHERE tripDate > ? ORDER BY tripDate DESC
+    ''', (datetime.now().isoformat(),)).fetchall()
+
+    tripList = []
+    for row in rows:
+        tripList.append({
+            "id": row[0],
+            "tripName": row[1],
+            "tripDate": row[2],
+            "tripLeader": row[3],
+            "tripLocation": row[4],
+            "info": row[5],
+            "link": row[6],
+            "formCloseDate": row[7],
+            "isFormClosed": row[8]
+        })
+
+    cursor.close()
+    conn.close()
+
+    return jsonify({
+        "count": len(tripList),
+        "trips": tripList
+    }), 200
+
+@trips_bp.route('/trips/all', methods=['GET'])
+def GetAllTrips():
+    """
+    Get all trips, ordered by tripDate
+    ---
+    tags:
+      - Trips
+
+    responses:
+        200:
+            description: The list of all trips
+    """
+
+    conn = GetDBConnection()
+    cursor = conn.cursor()
+
+    rows = cursor.execute('''
+        SELECT * FROM trips ORDER BY tripDate DESC
+    ''').fetchall()
+
+    tripList = []
+    for row in rows:
+        tripList.append({
+            "id": row[0],
+            "tripName": row[1],
+            "tripDate": row[2],
+            "tripLeader": row[3],
+            "tripLocation": row[4],
+            "info": row[5],
+            "link": row[6],
+            "formCloseDate": row[7],
+            "isFormClosed": row[8]
+        })
+
+    cursor.close()
+    conn.close()
+
+    return jsonify({
+        "count": len(tripList),
+        "trips": tripList
+    }), 200
