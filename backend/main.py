@@ -6,13 +6,16 @@ Initializes Flask app
 from flask import Flask
 from flask_cors import CORS
 from flasgger import Swagger
+# API
+from routes.trip_routes import trips_bp
 
 app = Flask(__name__)
 app.secret_key = 'iminsecure'
 
 CORS(app, supports_credentials=True, origins=["http://localhost:5173"])
-
 swagger = Swagger(app)
+
+app.register_blueprint(trips_bp)
 
 @app.route('/')
 def index():

@@ -75,11 +75,20 @@ def InsertTestData(conn):
         INSERT INTO leaders (name, position, pictureURL, info, date)
         VALUES (?, ?, ?, ?, ?)
     ''', [
-        ('Gio Girasoli', 'president', 'x', 'I like long walks on the beach and playing Minecraft', datetime.now().isoformat()),
-        ('Sydney Kolz', 'vicePresident', 'x', 'x', datetime.now().isoformat()),
-        ('Ryan Le Vine', 'treasurer', 'x', 'x', datetime.now().isoformat()),
-        ('Ginny Decker', 'secretary', 'x', 'x', datetime.now().isoformat()),
-        ('Parker Pretty', 'outreach', 'x', 'x', datetime.now().isoformat())
+        ('Gio Girasoli', 'president', 'x', 'I like long walks on the beach and playing Minecraft', datetime.now().isoformat(timespec='hours')),
+        ('Sydney Kolz', 'vicePresident', 'x', 'x', datetime.now().isoformat(timespec='hours')),
+        ('Ryan Le Vine', 'treasurer', 'x', 'x', datetime.now().isoformat(timespec='hours')),
+        ('Ginny Decker', 'secretary', 'x', 'x', datetime.now().isoformat(timespec='hours')),
+        ('Parker Pretty', 'outreach', 'x', 'x', datetime.now().isoformat(timespec='hours'))
+    ])
+
+    #Example Trip
+    cursor.executemany('''
+        INSERT INTO trips (tripName, tripType, tripDate, tripLeader, tripLocation, info, link, formCloseDate, isFormClosed)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ''', [
+        ('Mt. Washington', 'hiking', '2025-09-05', 'EBoard', 'Mt. Washington', 'Everybody\'s favorite', 'x', datetime.now().isoformat(timespec='hours'), 1),
+        ('Rumney', 'climbing', '2025-12-18', 'EBoard', 'Mt. Rumney', 'I wish', 'x', datetime.now().isoformat(timespec='hours'), 1)
     ])
 
     conn.commit()
