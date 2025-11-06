@@ -86,15 +86,15 @@ def GetCurrentTrips():
         tripList = []
         for row in rows:
             tripList.append({
-                "id": row[0],
-                "tripName": row[1],
-                "tripDate": row[2],
-                "tripLeader": row[3],
-                "tripLocation": row[4],
-                "info": row[5],
-                "link": row[6],
-                "formCloseDate": row[7],
-                "isFormClosed": row[8]
+                "id": row["id"],
+                "tripName": row["tripName"],
+                "tripDate": row["tripDate"],
+                "tripLeader": row["tripLeader"],
+                "tripLocation": row["tripLocation"],
+                "info": row["info"],
+                "link": row["link"],
+                "formCloseDate": row["formCloseDate"],
+                "isFormClosed": row["isFormClosed"]
             })
 
         cursor.close()
@@ -136,15 +136,15 @@ def GetAllTrips():
         tripList = []
         for row in rows:
             tripList.append({
-                "id": row[0],
-                "tripName": row[1],
-                "tripDate": row[2],
-                "tripLeader": row[3],
-                "tripLocation": row[4],
-                "info": row[5],
-                "link": row[6],
-                "formCloseDate": row[7],
-                "isFormClosed": row[8]
+                "id": row["id"],
+                "tripName": row["tripName"],
+                "tripDate": row["tripDate"],
+                "tripLeader": row["tripLeader"],
+                "tripLocation": row["tripLocation"],
+                "info": row["info"],
+                "link": row["link"],
+                "formCloseDate": row["formCloseDate"],
+                "isFormClosed": row["isFormClosed"]
             })
 
         cursor.close()
