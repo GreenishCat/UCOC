@@ -46,13 +46,6 @@ def test_create_trip(client):
     assert testCreate.status_code == 201
     assert testCreate.json['trip']['tripLeader'] == "Jerma"
 
-    #Test incomplete addition
-    # test_values = {"tripName": "Nothing else here!"}
-
-    # testCreate = client.post('/trips/create', json=test_values)
-    # assert testCreate.status_code == 400
-
-
 def test_get_all_trips(client):
     """Test get all trips"""
 
