@@ -225,7 +225,7 @@ def CreateTrip():
     data = request.json
     required_fields = ['tripName', 'tripDate', 'tripLeader', 'tripLocation', 'info', 'link', 'formCloseDate', 'isFormClosed']
 
-    missing_fields = [field for field in required_fields if field not in data or not data[field]]
+    missing_fields = [field for field in required_fields if field not in data]
     if missing_fields:
         return jsonify({
             "error": "Missing required fields",
@@ -255,7 +255,8 @@ def CreateTrip():
 
         return jsonify({
             "message": "Trip created successfully",
-            "newTripID": newTripID
+            "newTripID": newTripID,
+            'trip': data
         }), 201
     except Exception as e:
         cursor.close()
