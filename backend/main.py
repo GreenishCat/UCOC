@@ -7,6 +7,7 @@ from flask import Flask
 from flask_cors import CORS
 from flasgger import Swagger
 from init_db import CreateTables, InsertTestData
+import sqlite3
 import os
 # API
 from routes.trip_routes import trips_bp
