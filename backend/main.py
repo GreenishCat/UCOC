@@ -22,9 +22,13 @@ swagger = Swagger(app)
 
 app.register_blueprint(trips_bp)
 
+@app.route('/api')
+def base():
+    return "<h1>Your baby thinks that people can't change</h1>"
+
 @app.route('/')
 def index():
-    return "<h1>Your baby thinks that people can't change</h1>"
+    return "<h1>My rods and cones are all screwed up!</h1>"
 
 def initializeDB():
     if os.path.exists(TEST_DB): os.remove(TEST_DB)
