@@ -11,7 +11,7 @@ def GetDBConnection():
     conn.row_factory = sqlite3.Row
     return conn
 
-@trips_bp.route('/trips/<int:trip_id>', methods=['GET'])
+@trips_bp.route('/api/trips/<int:trip_id>', methods=['GET'])
 def GetTripByID(trip_id):
     """
     Get a trip by integer ID
@@ -62,7 +62,7 @@ def GetTripByID(trip_id):
         "isFormClosed": trip["isFormClosed"]
     })
 
-@trips_bp.route('/trips', methods=['GET'])
+@trips_bp.route('/api/trips', methods=['GET'])
 def GetCurrentTrips():
     """
     Get all current trips (tripDate > current date), ordered by tripDate
@@ -112,7 +112,7 @@ def GetCurrentTrips():
             "details": str(e)
         }), 500
 
-@trips_bp.route('/trips/all', methods=['GET'])
+@trips_bp.route('/api/trips/all', methods=['GET'])
 def GetAllTrips():
     """
     Get all trips, ordered by tripDate
@@ -162,7 +162,7 @@ def GetAllTrips():
             "details": str(e)
         }), 500
 
-@trips_bp.route('/trips/create', methods=['POST'])
+@trips_bp.route('/api/trips/create', methods=['POST'])
 def CreateTrip():
     """
     Create a trip
