@@ -7,6 +7,7 @@ from flask import Flask
 from flask_cors import CORS
 from flasgger import Swagger
 from init_db import CreateTables, InsertTestData
+import os
 # API
 from routes.trip_routes import trips_bp
 
@@ -34,4 +35,5 @@ def initializeDB():
 
 if __name__ == '__main__':
     initializeDB()
-    app.run(host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
